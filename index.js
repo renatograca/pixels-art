@@ -43,7 +43,22 @@ function generatePixelBoard() {
   }
 }
 
+function selectedColor() {
+  colors.forEach((palete) => {
+    palete.addEventListener('click', () => {
+      document.querySelector('.selected').classList.remove('selected');
+      palete.classList.add('selected');
+    });
+  });
+}
+
+function initialColorSelected() {
+  colors[0].classList.add('selected');
+}
+
 window.onload = () => {
   createPaletteColors();
   generatePixelBoard();
+  initialColorSelected();
+  selectedColor();
 };
