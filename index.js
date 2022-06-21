@@ -95,8 +95,12 @@ function initialColorSelected() {
 }
 
 genarateBoard.addEventListener('click', () => {
-  pixelBoard.innerHTML = '';
-  generatePixelBoard();
+  if (lengthBoard.value === '') {
+    alert('Board inválido');
+  } else {
+    pixelBoard.innerHTML = '';
+    generatePixelBoard();
+  }
 });
 
 window.onload = () => {
