@@ -2,6 +2,7 @@ const colors = document.querySelectorAll('.color');
 const pixelBoard = document.querySelector('#board');
 const lengthBoard = document.querySelector('#board-size');
 const genarateBoard = document.querySelector('#generate-board');
+const clearBoard = document.querySelector('#clear-board');
 
 let r; let g; let b;
 
@@ -24,11 +25,11 @@ function createPaletteColors() {
 }
 
 function minLength(board, length) {
-  return board < length;
+  return board <= length;
 }
 
 function maxLength(board, length) {
-  return board > length;
+  return board >= length;
 }
 
 function verifyLengthBoard() {
@@ -96,11 +97,16 @@ function initialColorSelected() {
 
 genarateBoard.addEventListener('click', () => {
   if (lengthBoard.value === '') {
-    alert('Board inválido');
+    alert('Board inválido!');
   } else {
     pixelBoard.innerHTML = '';
     generatePixelBoard();
   }
+});
+
+clearBoard.addEventListener('click', () => {
+  pixelBoard.innerHTML = '';
+  generatePixelBoard();
 });
 
 window.onload = () => {
