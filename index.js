@@ -20,10 +20,21 @@ function createPaletteColors() {
   });
 }
 
+function getElementWithClassSelected() {
+  return document.querySelector('.selected');
+}
+
+function toPaint({ target }) {
+  const color = getElementWithClassSelected();
+  const pixel = target;
+  pixel.style.backgroundColor = color.style.backgroundColor;
+}
+
 function createPixel() {
   const pixel = document.createElement('div');
   pixel.classList.add('pixel');
   pixel.style.backgroundColor = 'white';
+  pixel.addEventListener('click', toPaint);
   return pixel;
 }
 
@@ -46,7 +57,7 @@ function generatePixelBoard() {
 function selectedColor() {
   colors.forEach((palete) => {
     palete.addEventListener('click', () => {
-      document.querySelector('.selected').classList.remove('selected');
+      getElementWithClassSelected().classList.remove('selected');
       palete.classList.add('selected');
     });
   });
